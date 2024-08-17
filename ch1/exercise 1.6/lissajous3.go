@@ -13,13 +13,6 @@ import (
 
 var palette = []color.Color{color.Black}
 
-const (
-	blackIndex = 0
-	redIndex = 1
-	greenIndex = 2
-	blueIndex = 3
-)
-
 func main() {
 	addColors()
 	rand.Seed(time.Now().UTC().UnixNano())
@@ -52,7 +45,7 @@ func lissajous(out io.Writer) {
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
-			foregroundColor := uint8(i % 32 + 1)
+			foregroundColor := uint8(i%32 + 1)
 			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), foregroundColor)
 		}
 		phase += 0.1
